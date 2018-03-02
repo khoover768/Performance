@@ -183,9 +183,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseTypes\LoopTests.cs" />
     <Compile Include="BaseTypes\TypeofTests.cs" />
+    <Compile Include="LurList\Tools\LruCache.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RingBuffer\FixLinkedListQueueTest.cs" />
+    <Compile Include="RingBuffer\Tools\FixedConcurrentQueue.cs" />
+    <Compile Include="RingBuffer\Tools\FixedSizeQueue.cs" />
+    <Compile Include="RingBuffer\Tools\FixedLinkedListQueue.cs" />
+    <Compile Include="RingBuffer\Tools\Message.cs" />
+    <Compile Include="RingBuffer\ConcurentQueueTest.cs" />
+    <Compile Include="RingBuffer\QueueTest.cs" />
+    <Compile Include="RingBuffer\RingQueueTests.cs" />
+    <Compile Include="RingBuffer\Tools\RingQueue.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -196,5 +207,6 @@
     <Analyzer Include="..\..\_Packages\Microsoft.CodeAnalysis.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\..\_Packages\Microsoft.CodeAnalysis.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,10 +2,12 @@
 // Licensed under the MIT License, See License.txt in the project root for license information.
 
 using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
 using FrameworkPerformanceTest.BaseTypes;
+using FrameworkPerformanceTest.RingBuffer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,13 @@ namespace FrameworkPerformanceTest
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<TypeofTests>(new MainConfig());
+            var config = new MainConfig();
+
+            BenchmarkRunner.Run<TypeofTests>(config);
+            BenchmarkRunner.Run<LoopTests>(config);
+            BenchmarkRunner.Run<RingQueueTests>(config);
+            BenchmarkRunner.Run<QueueTest>(config);
+            BenchmarkRunner.Run<FixLinkedListQueueTest>(config);
         }
 
         public class MainConfig : ManualConfig
@@ -27,6 +35,7 @@ namespace FrameworkPerformanceTest
             {
                 Add(DefaultConfig.Instance);
                 Add(Job.Default.With(Runtime.Clr).With(Jit.LegacyJit).With(Platform.X64));
+                Add(MemoryDiagnoser.Default);
             }
         }
     }
