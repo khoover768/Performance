@@ -7,6 +7,8 @@ using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
 using FrameworkPerformanceTest.BaseTypes;
+using FrameworkPerformanceTest.LruList;
+using FrameworkPerformanceTest.LruList.Tests;
 using FrameworkPerformanceTest.RingBuffer;
 using System;
 using System.Collections.Generic;
@@ -22,11 +24,55 @@ namespace FrameworkPerformanceTest
         {
             var config = new MainConfig();
 
-            BenchmarkRunner.Run<TypeofTests>(config);
-            BenchmarkRunner.Run<LoopTests>(config);
-            BenchmarkRunner.Run<RingQueueTests>(config);
-            BenchmarkRunner.Run<QueueTest>(config);
-            BenchmarkRunner.Run<FixLinkedListQueueTest>(config);
+            //BenchmarkRunner.Run<TypeofTests>(config);
+            //BenchmarkRunner.Run<LoopTests>(config);
+            //BenchmarkRunner.Run<TryPerformanceTests>(config);
+
+            //BenchmarkRunner.Run<FixedListStoragePerformanceTests>();
+
+            //BenchmarkRunner.Run<RingQueueTests>(config);
+            //BenchmarkRunner.Run<QueueTest>(config);
+            //BenchmarkRunner.Run<QueueStructTests>(config);
+            //BenchmarkRunner.Run<FixLinkedListQueueTest>(config);
+
+            BenchmarkRunner.Run<LruCacheTests>(config);
+            BenchmarkRunner.Run<LruDictionaryTests>(config);
+            BenchmarkRunner.Run<LruDictionary2PerformanceTests>(config);
+            BenchmarkRunner.Run<DictionaryOnlyPerformanceTests>(config);
+
+            //FixedListStorageTests ft = new FixedListStorageTests();
+            //ft.FixedListStorageVariationTests();
+
+            //LruListUnitTests t = new LruListUnitTests();
+            //t.SizeTests();
+            //t.FuzzyTest();
+
+            //LruUnitDictionaryTests t = new LruUnitDictionaryTests();
+            //t.SimpleTests();
+
+            //LruCacheTests t1 = new LruCacheTests();
+            //t1.SetSpeedTest();
+            //t1.SetDoubleSpeedTest();
+            //t1.SetGetSpeedTest();
+            //t1.SetGetDoubleSpeedTest();
+            //t1.ParallelEnqueueGetTest();
+
+            //LruDictionaryTests t = new LruDictionaryTests();
+            //t.SetSpeedTest();
+            //t.SetDoubleSpeedTest();
+            //t.SetGetSpeedTest();
+            //t.SetGetDoubleSpeedTest();
+            //t.ParallelEnqueueGetTest();
+
+            //new FixedListStoragePerformanceTests().SetSpeedTest();
+            //new FixedListStoragePerformanceTests().SetGetRemoveSpeedTest();
+            //new FixedListStoragePerformanceTests().ParallelEnqueueGetTest();
+
+            //new DictionaryOnlyPerformanceTests().SetSpeedTest();
+            //new DictionaryOnlyPerformanceTests().SetDoubleSpeedTest();
+            //new DictionaryOnlyPerformanceTests().SetGetSpeedTest();
+            //new DictionaryOnlyPerformanceTests().SetGetDoubleSpeedTest();
+            //new DictionaryOnlyPerformanceTests().ParallelEnqueueGetTest();
         }
 
         public class MainConfig : ManualConfig

@@ -7,65 +7,66 @@ using System.Threading.Tasks;
 
 namespace FrameworkPerformanceTest.RingBuffer
 {
-    public class QueueTest
+    public class QueueStructTests
     {
         private readonly int _queueSize = (int)Math.Pow(10, 6);
         private readonly int _doubleQueueSize = (int)Math.Pow(10, 6) * 2;
-        private readonly FixedSizeQueue<Message> _fixedQueue;
+        private readonly FixedSizeQueue<MessageStruct> _fixedQueueStruct;
+        private const long _longValue = 100;
 
-        public QueueTest()
+        public QueueStructTests()
         {
-            _fixedQueue = new FixedSizeQueue<Message>(_queueSize);
+            _fixedQueueStruct = new FixedSizeQueue<MessageStruct>(_queueSize);
         }
 
-        [Benchmark(Description = "Queue encode speed")]
+        [Benchmark(Description = "Queue encode speed - struct")]
         public void EnqeueQueueSpeedTest()
         {
             for (int i = 0; i < _queueSize; i++)
             {
-                _fixedQueue.Enqueue(new Message { Value = i });
+                _fixedQueueStruct.Enqueue(new MessageStruct(i, _longValue));
             }
         }
 
-        [Benchmark(Description = "Queue double encode speed")]
+        [Benchmark(Description = "Queue double encode speed - struct")]
         public void EnqeueDoubleQueueSpeedTest()
         {
             for (int i = 0; i < _doubleQueueSize; i++)
             {
-                _fixedQueue.Enqueue(new Message { Value = i });
+                _fixedQueueStruct.Enqueue(new MessageStruct(i, _longValue));
             }
         }
 
-        [Benchmark(Description = "Queue encode/dequeue speed")]
+        [Benchmark(Description = "Queue encode/dequeue speed - struct")]
         public void EnqeueDequeueQueueSpeedTest()
         {
             for (int i = 0; i < _queueSize; i++)
             {
-                _fixedQueue.Enqueue(new Message { Value = i });
+                _fixedQueueStruct.Enqueue(new MessageStruct(i, _longValue));
             }
 
             for (int i = 0; i < _queueSize; i++)
             {
-                Message msg = _fixedQueue.Dequeue();
+                MessageStruct msg = _fixedQueueStruct.Dequeue();
             }
         }
 
-        [Benchmark(Description = "Queue double encode/dequeue speed")]
+        [Benchmark(Description = "Queue double encode/dequeue speed - struct")]
         public void EnqeueDequeueDoubleQueueSpeedTest()
         {
 
             for (int i = 0; i < _doubleQueueSize; i++)
             {
-                _fixedQueue.Enqueue(new Message { Value = i });
+                _fixedQueueStruct.Enqueue(new MessageStruct(i, _longValue));
             }
 
             for (int i = 0; i < _queueSize; i++)
             {
-                Message msg = _fixedQueue.Dequeue();
+                MessageStruct msg = _fixedQueueStruct.Dequeue();
             }
         }
 
-        [Benchmark(Description = "Queue parallel enqueue / dequeue task")]
+        [Benchmark(Description = "Queue parallel enqueue / dequeue task - struct")]
         public void ParallelEnqueueDequeueTest()
         {
             Task t1 = Task.Run(() => EnqueueTask());
@@ -78,7 +79,7 @@ namespace FrameworkPerformanceTest.RingBuffer
         {
             for (int i = 0; i < _queueSize; i++)
             {
-                _fixedQueue.Enqueue(new Message { Value = i });
+                _fixedQueueStruct.Enqueue(new MessageStruct(i, _longValue));
             }
         }
 
@@ -86,7 +87,7 @@ namespace FrameworkPerformanceTest.RingBuffer
         {
             int count = 0;
 
-            while (_fixedQueue.TryDequeue(out Message message))
+            while (_fixedQueueStruct.TryDequeue(out MessageStruct message))
             {
                 count++;
                 if (count == _queueSize)

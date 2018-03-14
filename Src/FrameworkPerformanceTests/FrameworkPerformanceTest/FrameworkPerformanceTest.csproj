@@ -32,14 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BenchmarkDotNet, Version=0.10.12.0, Culture=neutral, PublicKeyToken=aa0ca2f9092cefc4, processorArchitecture=MSIL">
-      <HintPath>..\..\_Packages\BenchmarkDotNet.0.10.12\lib\net46\BenchmarkDotNet.dll</HintPath>
+    <Reference Include="BenchmarkDotNet, Version=0.10.13.0, Culture=neutral, PublicKeyToken=aa0ca2f9092cefc4, processorArchitecture=MSIL">
+      <HintPath>..\..\_Packages\BenchmarkDotNet.0.10.13\lib\net46\BenchmarkDotNet.dll</HintPath>
     </Reference>
-    <Reference Include="BenchmarkDotNet.Core, Version=0.10.12.0, Culture=neutral, PublicKeyToken=aa0ca2f9092cefc4, processorArchitecture=MSIL">
-      <HintPath>..\..\_Packages\BenchmarkDotNet.Core.0.10.12\lib\net46\BenchmarkDotNet.Core.dll</HintPath>
+    <Reference Include="BenchmarkDotNet.Core, Version=0.10.13.0, Culture=neutral, PublicKeyToken=aa0ca2f9092cefc4, processorArchitecture=MSIL">
+      <HintPath>..\..\_Packages\BenchmarkDotNet.Core.0.10.13\lib\net46\BenchmarkDotNet.Core.dll</HintPath>
     </Reference>
-    <Reference Include="BenchmarkDotNet.Toolchains.Roslyn, Version=0.10.12.0, Culture=neutral, PublicKeyToken=aa0ca2f9092cefc4, processorArchitecture=MSIL">
-      <HintPath>..\..\_Packages\BenchmarkDotNet.Toolchains.Roslyn.0.10.12\lib\net46\BenchmarkDotNet.Toolchains.Roslyn.dll</HintPath>
+    <Reference Include="BenchmarkDotNet.Toolchains.Roslyn, Version=0.10.13.0, Culture=neutral, PublicKeyToken=aa0ca2f9092cefc4, processorArchitecture=MSIL">
+      <HintPath>..\..\_Packages\BenchmarkDotNet.Toolchains.Roslyn.0.10.13\lib\net46\BenchmarkDotNet.Toolchains.Roslyn.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=5.1.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\_Packages\FluentAssertions.5.1.2\lib\net47\FluentAssertions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=2.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\_Packages\Microsoft.CodeAnalysis.Common.2.6.1\lib\netstandard1.3\Microsoft.CodeAnalysis.dll</HintPath>
@@ -183,12 +186,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Config.cs" />
     <Compile Include="BaseTypes\LoopTests.cs" />
+    <Compile Include="BaseTypes\TryPerformanceTests.cs" />
     <Compile Include="BaseTypes\TypeofTests.cs" />
-    <Compile Include="LurList\Tools\LruCache.cs" />
+    <Compile Include="LruList\FixedListStoragePerformanceTests.cs" />
+    <Compile Include="LruList\DictionaryOnlyPerformanceTests.cs" />
+    <Compile Include="LruList\LruDictionary2PerformanceTests.cs" />
+    <Compile Include="LruList\LruDictionaryTests.cs" />
+    <Compile Include="LruList\LruCacheTests.cs" />
+    <Compile Include="LruList\Tests\LruUnitDictionaryTests.cs" />
+    <Compile Include="LruList\Tools\CacheItem.cs" />
+    <Compile Include="LruList\Tools\FixedListStorage.cs" />
+    <Compile Include="LruList\Tests\FixedListStorageTests.cs" />
+    <Compile Include="LruList\Tools\ListExtensions.cs" />
+    <Compile Include="LruList\Tests\LruListUnitTests.cs" />
+    <Compile Include="LruList\Tools\LruDictionary2.cs" />
+    <Compile Include="LruList\Tools\LruHandle.cs" />
+    <Compile Include="LruList\Tools\LruList.cs" />
+    <Compile Include="LruList\Tools\LruCache.cs" />
+    <Compile Include="LruList\Tools\LruDictionary.cs" />
+    <Compile Include="LruList\Tools\RingBuffer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RingBuffer\FixLinkedListQueueTest.cs" />
+    <Compile Include="RingBuffer\QueueStructTests.cs" />
     <Compile Include="RingBuffer\Tools\FixedConcurrentQueue.cs" />
     <Compile Include="RingBuffer\Tools\FixedSizeQueue.cs" />
     <Compile Include="RingBuffer\Tools\FixedLinkedListQueue.cs" />

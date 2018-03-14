@@ -46,6 +46,5 @@ namespace FrameworkPerformanceTest.BaseTypes
                 total += _array[index];
             }
         }
-
     }
 }
